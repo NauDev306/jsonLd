@@ -11,7 +11,7 @@ interface JsonLd
 	/**
 	 * Retrieve the @context
 	 *
-	 * @return string
+	 * @return string|null
 	 */
 	public function getContext();
 
