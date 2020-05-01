@@ -1,6 +1,6 @@
 <?php
 
-namespace NauDev\JsonLd\Providers;
+namespace NauDev\JsonLd;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,7 +19,7 @@ class JsonLdServiceProvider extends ServiceProvider
 	 */
 	public function boot()
 	{
-	  $this->registerPublishing();  
+	    $this->registerPublishing();
 	}
 
 	/**
@@ -30,7 +30,7 @@ class JsonLdServiceProvider extends ServiceProvider
 	public function register()
 	{
 		$this->mergeConfigFrom(
-			__DIR_.'/../../config/jsonld.php', 'jsonld'
+			__DIR_.'/../config/jsonld.php', 'jsonld'
 		);
 	}
 
@@ -42,11 +42,11 @@ class JsonLdServiceProvider extends ServiceProvider
 	private function registerPublishing()
 	{
 		$this->publishes([
-			_DIR_.'/../../config/jsonld.php' => config_path('jsonld.php')
+			_DIR_.'/../config/jsonld.php' => config_path('jsonld.php')
 		], 'jsonld-config');
 
 		$this->publishes([
-			_DIR_.'/../../stubs/JsonLdServiceProvider.stub' => app_path('Providers/JsonLdServiceProvider.php')
+			_DIR_.'/../stubs/JsonLdServiceProvider.stub' => app_path('Providers/JsonLdServiceProvider.php')
 		], 'jsonld-provider');
 	}
 

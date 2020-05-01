@@ -43,6 +43,6 @@ class JsonLd implements JsonLdContract
 	 */
 	public function getJsonLd()
 	{
-		return '{"test":"test"}';
+		return json_encode((object)['test' => 'test']);
 	}
 }

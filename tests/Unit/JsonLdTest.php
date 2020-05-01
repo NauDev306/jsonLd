@@ -39,4 +39,20 @@ class JsonLdTest extends TestCase
 		$this->assertTrue(!is_null($context));
 		$this->assertSame($expected, $context);	
 	}
+
+	/**
+	 * Check if the getJsonLd function
+	 * actually returns JSON
+	 *
+	 * @return void
+	 */
+	public function testIfGetJsonLdReturnsJson()
+	{
+		$jsonLd = new JsonLd;
+
+		$decoded = json_decode($jsonLd->getJsonLd());
+
+		$this->assertNotNull($decoded);
+		//print_r($decoded);
+	}
 }
