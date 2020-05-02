@@ -35,5 +35,8 @@
 				"NauDev\\JsonLd\\Providers\\JsonLdServiceProvider"
 			]
 		}
+	},
+	"scripts": {
+		"tests": "vendor/bin/phpunit"
 	}
 }
