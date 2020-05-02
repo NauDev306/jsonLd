@@ -16,9 +16,11 @@ interface JsonLd
 	public function getContext();
 
 	/**
-	 * Retrieve the JSON LD
-	 * 
-	 * @return json
+	 * Process an array of data
+	 * into a JSONLD String
+	 *
+	 * @param array
+	 * @return string
 	 */
-	public function getJsonLd();
+	public function getJsonLd(array $data);
 }
