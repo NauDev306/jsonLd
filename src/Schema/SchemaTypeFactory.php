@@ -16,15 +16,18 @@ class SchemaTypeFactory implements FactoryInterface
 	public static function makeType(array $typeData)
 	{
 		$type = [];
+
 		$type['@type'] = ucfirst($typeData['type']);
 		unset($typeData['type']);
+
 		foreach ($typeData as $key => $value) {
-		    if(is_array($value)){
-		        $type[$key] = self::makeType($value);
-		    } else {
-		        $type[$key] = $value;  
-		    }
+			if(is_array($value)){
+				$type[$key] = self::makeType($value);
+			} else {
+				$type[$key] = $value;  
+			}
 		}
+		
 		return $type;
 	}
 }

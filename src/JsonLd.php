@@ -2,8 +2,8 @@
 
 namespace NauDev\JsonLd;
 
-use NauDev\JsonLd\Providers\JsonLdServiceProvider;
 use NauDev\JsonLd\Schema\SchemaTypeFactory;
+use NauDev\JsonLd\Providers\JsonLdServiceProvider;
 use NauDev\JsonLd\Contracts\JsonLd as JsonLdContract;
 
 class JsonLd implements JsonLdContract
@@ -13,12 +13,6 @@ class JsonLd implements JsonLdContract
 	 * @var string
 	 */
 	protected $context;
-
-	/**
-	 * The Json Data
-	 * @var string
-	 */
-	protected $json;
 
 	/**
 	 * Construct the JsonLd Object
@@ -54,18 +48,18 @@ class JsonLd implements JsonLdContract
 	{
 		$obj = [];
 
-	    $obj['@context'] = $data['context'];
-	    unset($data['context']);
+		$obj['@context'] = $data['context'];
+		unset($data['context']);
 
-	    foreach ($data as $key => $value) {
-	        if(is_array($value)){
-	            $obj[$key] = SchemaTypeFactory::makeType($value); 
-	        } else {
-	            $key === 'type' ? $obj["@" . $key] = $value
-	                : $obj[$key] = $value;
-	        }
-	    }
+		foreach ($data as $key => $value) {
+			if(is_array($value)){
+				$obj[$key] = SchemaTypeFactory::makeType($value); 
+			} else {
+				$key === 'type' ? $obj["@" . $key] = $value
+								: $obj[$key] = $value;
+			}
+		}
 
-	    return json_encode($obj, JSON_UNESCAPED_SLASHES);
+		return json_encode($obj, JSON_UNESCAPED_SLASHES);
 	}
 }
