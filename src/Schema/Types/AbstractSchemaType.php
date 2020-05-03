@@ -36,12 +36,7 @@ abstract class AbstractSchemaType
 	protected function assignAttributes(array $attributes)
 	{
 		foreach ($attributes as $key => $value) {
-			if(!isset($this->permitted[$key]))
-			{
-				return;
-			}
-
-			$this->{$key} = $value;
+			
 
 			return $this;
 		}
@@ -50,6 +45,16 @@ abstract class AbstractSchemaType
 	/**
 	 * Assign a property
 	 *
-	 * @param 
+	 * @param mixed $key
+	 * @param mixed $value
 	 */
+	protected function assignAttribute($key, $value)
+	{
+		if(!in_array($key, $this->permitted))
+		{
+			throw InvalidArgumentException("$key is not settable!", 1);
+		}
+
+		$this->{$key} = $value;
+	}
 }

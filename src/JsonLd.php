@@ -51,6 +51,24 @@ class JsonLd implements JsonLdContract
 		$obj['@context'] = $data['context'];
 		unset($data['context']);
 
+		$types = $this->resolveTypes($data);
+
+		$obj = array_merge($obj, $types);
+
+		return json_encode($obj, JSON_UNESCAPED_SLASHES);
+	}
+
+	/**
+	 * Resolve the types using
+	 * the SchemaTypeFactory
+	 * 
+	 * @param array
+	 * @return array
+	 */
+	protected function resolveTypes(array $data)
+	{
+		$obj = [];
+
 		foreach ($data as $key => $value) {
 			if(is_array($value)){
 				$obj[$key] = SchemaTypeFactory::makeType($value); 
@@ -60,6 +78,7 @@ class JsonLd implements JsonLdContract
 			}
 		}
 
-		return json_encode($obj, JSON_UNESCAPED_SLASHES);
+		return $obj;
 	}
+
 }

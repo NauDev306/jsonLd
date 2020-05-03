@@ -6,7 +6,7 @@ use Tests\TestCase;
 use \InvalidArgumentException;
 use NauDev\JsonLd\Schema\Types\Thing;
 
-class AbstractTypeTest extends TestCase
+class AbstractSchemaTypeTest extends TestCase
 {
 	/**
 	 * Test if the AbstractType's
@@ -54,4 +54,17 @@ class AbstractTypeTest extends TestCase
 			//print_r($e->getMessage());
 		}
 	}
+
+	/**
+	 * Test if the assignAttribute function
+	 * correctly assigns the property
+	 *
+	 * @return void
+
+	public function testIfAttributeIsAssignedCorrectly()
+	{
+		$expected = "someValue";
+
+
+	}	 */
 }
