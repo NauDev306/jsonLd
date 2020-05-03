@@ -11,4 +11,29 @@ class Thing extends BaseType
 	 * @var array
 	 */
 	protected $permitted = [];
+
+	/**
+	 * Some Property
+	 * @var string
+	 */
+	protected $someProperty = "test";
+
+	/**
+	 * Instantiate the Type by passing it's
+	 * attributes
+	 *
+	 * @param array $attributes|null
+	 */
+	public function __construct(array $attributes = null)
+	{
+		if(!is_null($attributes))
+		{
+			$this->assignAttributes($attributes);
+		}
+	}
+
+	public function getSomeProperty()
+	{
+		return $this->someProperty;
+	}
 }
