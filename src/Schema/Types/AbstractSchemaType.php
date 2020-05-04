@@ -26,6 +26,15 @@ abstract class AbstractSchemaType
 		}
 	}
 
+	public function getType()
+	{
+		$className = get_class($this);
+
+		$className = explode("\\", $className);
+
+		return $className[count($className) - 1];
+	}
+
 	/**
 	 * Assign properties
 	 * for the type

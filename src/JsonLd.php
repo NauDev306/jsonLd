@@ -50,7 +50,10 @@ class JsonLd implements JsonLdContract
 
 		foreach (array_keys($data) as $type) {
 			$types[] = SchemaTypeFactory::make($type, $data[$type]);
+			
 		}
+		
+
 		return $types;
 		//return json_encode($types);
 	}

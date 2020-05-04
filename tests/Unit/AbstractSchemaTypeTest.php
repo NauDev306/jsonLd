@@ -56,15 +56,18 @@ class AbstractSchemaTypeTest extends TestCase
 	}
 
 	/**
-	 * Test if the assignAttribute function
-	 * correctly assigns the property
+	 * Test the generateType
+	 * Method
 	 *
 	 * @return void
-
-	public function testIfAttributeIsAssignedCorrectly()
+	 */
+	public function testIfGetTypeGeneratesTypeFromClassName()
 	{
-		$expected = "someValue";
+		$type = new Thing;
 
+		$typeName = $type->getType();
 
-	}	 */
+		$this->assertNotNull($typeName);
+		print_r($typeName);
+	}
 }

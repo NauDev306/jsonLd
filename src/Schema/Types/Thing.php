@@ -2,7 +2,7 @@
 
 namespace NauDev\JsonLd\Schema\Types;
 
-use NauDev\JsonLd\Schema\Types\AbstractSchemaType as BaseType;
+use NauDev\JsonLd\Schema\Types\GenericType as BaseType;
 
 class Thing extends BaseType
 {
@@ -26,9 +26,14 @@ class Thing extends BaseType
 	 *
 	 * @param array $attributes
 	 */
-	public function __construct(array $attributes)
-	{
-		$this->assignAttributes($attributes);
+	public function __construct(array $attributes = null)
+	{		
+		parent::__construct();
+		
+		if(!is_null($attributes))
+		{
+			$this->assignAttributes($attributes);			
+		}
 	}
 
 	public function getSomeProperty()
