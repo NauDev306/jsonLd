@@ -46,39 +46,13 @@ class JsonLd implements JsonLdContract
 	 */
 	public function getJsonLd(array $data)
 	{
-		$obj = [];
+		//$types["@context"] = $this->context;
 
-		$obj['@context'] = $data['context'];
-		unset($data['context']);
-
-		$types = $this->resolveTypes($data);
-
-		$obj = array_merge($obj, $types);
-
-		return json_encode($obj, JSON_UNESCAPED_SLASHES);
-	}
-
-	/**
-	 * Resolve the types using
-	 * the SchemaTypeFactory
-	 * 
-	 * @param array
-	 * @return array
-	 */
-	protected function resolveTypes(array $data)
-	{
-		$obj = [];
-
-		foreach ($data as $key => $value) {
-			if(is_array($value)){
-				$obj[$key] = SchemaTypeFactory::makeType($value); 
-			} else {
-				$key === 'type' ? $obj["@" . $key] = $value
-								: $obj[$key] = $value;
-			}
+		foreach (array_keys($data) as $type) {
+			$types[] = SchemaTypeFactory::make($type, $data[$type]);
 		}
-
-		return $obj;
+		return $types;
+		//return json_encode($types);
 	}
 
 }

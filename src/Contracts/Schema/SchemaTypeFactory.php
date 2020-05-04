@@ -8,8 +8,9 @@ interface SchemaTypeFactory
 	 * Create a Type Class from an
 	 * array of data
 	 * 
-	 * @param array
-	 * @return array
+	 * @param string $typeName
+	 * @param array $typeData
+	 * @return \NauDev\JsonLd\Schema\Types\AbstractSchemaType $type
 	 */
-	public static function makeType(array $data);
+	public static function make(string $typeName, array $typeData);
 }

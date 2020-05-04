@@ -35,26 +35,24 @@ abstract class AbstractSchemaType
 	 */
 	protected function assignAttributes(array $attributes)
 	{
-		foreach ($attributes as $key => $value) {
-			
+		$attributes = array_filter($attributes, function($k){
+			return $this->isPermitted($k);
+		}, ARRAY_FILTER_USE_KEY);
 
-			return $this;
+		foreach ($attributes as $key => $value) {
+			$this->{$key} = $value;
 		}
 	}
 
 	/**
-	 * Assign a property
+	 * Check if a attribute
+	 * is permitted
 	 *
-	 * @param mixed $key
-	 * @param mixed $value
+	 * @param string $attribute
+	 * @return bool
 	 */
-	protected function assignAttribute($key, $value)
+	protected function isPermitted(string $attribute) : bool
 	{
-		if(!in_array($key, $this->permitted))
-		{
-			throw InvalidArgumentException("$key is not settable!", 1);
-		}
-
-		$this->{$key} = $value;
+		return !in_array($attribute, $this->permitted) ? false : true;
 	}
 }

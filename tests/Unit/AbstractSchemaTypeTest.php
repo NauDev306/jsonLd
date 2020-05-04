@@ -22,7 +22,7 @@ class AbstractSchemaTypeTest extends TestCase
 			"someProperty" => "test"
 		];
 
-		$type = new Thing;
+		$type = new Thing($attributes);
 
 		$attribute = $type->__get(array_keys($attributes)[0]);
 
@@ -45,7 +45,7 @@ class AbstractSchemaTypeTest extends TestCase
 			"notAProperty" => "test"
 		];
 
-		$type = new Thing;
+		$type = new Thing($attributes);
 
 		try {
 			$type->__get(array_keys($attributes)[0]);			

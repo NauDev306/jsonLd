@@ -2,32 +2,47 @@
 
 namespace NauDev\JsonLd\Schema;
 
+use \InvalidArgumentException;
+use NauDev\JsonLd\Schema\Types\Thing;
 use NauDev\JsonLd\Contracts\Schema\SchemaTypeFactory as FactoryInterface;
 
 class SchemaTypeFactory implements FactoryInterface
 {
 	/**
+	 * The Schema Type Map
+	 * @var array
+	 */
+	protected static $typeMap = [
+		"thing" => Thing::class
+	];
+
+	/**
 	 * Create a Type Class from an
 	 * array of data
 	 * 
-	 * @param array
-	 * @return array
+	 * @param string $typeName
+	 * @param array $typeData
+	 * @return \NauDev\JsonLd\Schema\Types\AbstractSchemaType $type
+	 * 
+	 * @throws \InvalidArgumentException
 	 */
-	public static function makeType(array $typeData)
+	public static function make(string $typeName, array $typeData)
 	{
-		$type = [];
+		if(!isset(self::$typeMap[$typeName]))
+		{
+			throw new InvalidArgumentException("$typeName is not a valid Schema Type.", 1);
+		}
 
-		$type['@type'] = ucfirst($typeData['type']);
-		unset($typeData['type']);
+		$className = self::$typeMap[$typeName];
 
 		foreach ($typeData as $key => $value) {
-			if(is_array($value)){
-				$type[$key] = self::makeType($value);
-			} else {
-				$type[$key] = $value;  
+			if(is_array($value))
+			{
+				$typeData[$key] = self::make($key, $value);
 			}
 		}
-		
-		return $type;
+
+		return new $className($typeData);
+
 	}
 }
