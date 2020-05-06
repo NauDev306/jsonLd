@@ -54,20 +54,4 @@ class AbstractSchemaTypeTest extends TestCase
 			//print_r($e->getMessage());
 		}
 	}
-
-	/**
-	 * Test the getType
-	 * Method
-	 *
-	 * @return void
-	 */
-	public function testIfGetTypeGeneratesTypeFromClassName()
-	{
-		$type = new Thing;
-
-		$typeName = $type->getType();
-
-		$this->assertNotNull($typeName);
-		//print_r($type);
-	}
 }
