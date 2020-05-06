@@ -2,10 +2,12 @@
 
 namespace NauDev\JsonLd\Schema\Types;
 
-use NauDev\JsonLd\Contracts\Schema\SchemaType as SchemaTypeInterface;
+use \InvalidArgumentException;
 
-abstract class AbstractSchemaType implements SchemaTypeInterface
+abstract class AbstractSchemaType
 {
+
+
 	/**
 	 * Magic Getter
 	 * for any property
@@ -13,14 +15,23 @@ abstract class AbstractSchemaType implements SchemaTypeInterface
 	 * @param string
 	 * @return mixed
 	 */
-	abstract public function __get(string $key);
+	public function __get(string $key)
+	{
+		$key = ucfirst($key);
+		$method = "get" . $key;
 
-	/**
-	 * Return the @type
-	 * 
-	 * @return string
-	 */
-	abstract public function getType();
+		if(method_exists($this, $method))
+		{
+			return $this->{$method}();
+		} else {
+			throw new InvalidArgumentException("$key is not a Property", 1);
+		}
+	}
+
+	public function getType()
+	{
+		return $this->type;
+	}
 
 	/**
 	 * Assign properties
@@ -29,7 +40,16 @@ abstract class AbstractSchemaType implements SchemaTypeInterface
 	 * @param array
 	 * @return void
 	 */
-	abstract protected function assignAttributes(array $attributes);
+	protected function assignAttributes(array $attributes)
+	{
+		$attributes = array_filter($attributes, function($k){
+			return $this->isPermitted($k);
+		}, ARRAY_FILTER_USE_KEY);
+
+		foreach ($attributes as $key => $value) {
+			$this->{$key} = $value;
+		}
+	}
 
 	/**
 	 * Check if a attribute
@@ -38,5 +58,8 @@ abstract class AbstractSchemaType implements SchemaTypeInterface
 	 * @param string $attribute
 	 * @return bool
 	 */
-	abstract protected function isPermitted(string $attribute) : bool;
+	protected function isPermitted(string $attribute) : bool
+	{
+		return !in_array($attribute, $this->permitted) ? false : true;
+	}
 }
