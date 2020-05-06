@@ -6,8 +6,6 @@ use \InvalidArgumentException;
 
 abstract class AbstractSchemaType
 {
-
-
 	/**
 	 * Magic Getter
 	 * for any property
@@ -61,5 +59,25 @@ abstract class AbstractSchemaType
 	protected function isPermitted(string $attribute) : bool
 	{
 		return !in_array($attribute, $this->permitted) ? false : true;
+	}
+
+	/**
+	 * Convert the Object to an 
+	 * array
+	 *
+	 * @return array
+	 */
+	public function __toArray()
+	{
+		$array = [];
+
+		foreach ($this->permitted as $field) {
+			if(!is_null($this->{$field}))
+			{
+				$array[$field] = $this->{$field};
+			}
+		}
+
+		return $array;
 	}
 }

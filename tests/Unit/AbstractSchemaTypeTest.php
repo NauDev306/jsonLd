@@ -54,4 +54,25 @@ class AbstractSchemaTypeTest extends TestCase
 			//print_r($e->getMessage());
 		}
 	}
+
+	/**
+	 * Test if the magic __toArray
+	 * function returns all
+	 * Object vars
+	 *
+	 * @return void
+	 */
+	public function testIfMagicToArrayReturnsAllObjVars()
+	{
+		$expected = [
+			"someProperty" => "test"
+		];
+
+		$type = new Thing($expected);
+
+		$attributes = $type->__toArray();
+
+		$this->assertTrue(is_array($attributes));
+		$this->assertEquals($expected, $attributes);	
+	}
 }
