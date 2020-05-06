@@ -60,6 +60,6 @@ class JsonLdTest extends TestCase
 		$decoded = $jsonLd->getJsonLd($data);
 		$this->assertNotNull($decoded);
 		//$this->assertEquals($expected, $decoded);
-		print_r($decoded);
+		//print_r($decoded);
 	}
 }

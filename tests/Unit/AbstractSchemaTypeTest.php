@@ -56,7 +56,7 @@ class AbstractSchemaTypeTest extends TestCase
 	}
 
 	/**
-	 * Test the generateType
+	 * Test the getType
 	 * Method
 	 *
 	 * @return void
@@ -68,6 +68,6 @@ class AbstractSchemaTypeTest extends TestCase
 		$typeName = $type->getType();
 
 		$this->assertNotNull($typeName);
-		print_r($typeName);
+		//print_r($type);
 	}
 }

@@ -2,8 +2,6 @@
 
 namespace NauDev\JsonLd\Schema\Types;
 
-use \InvalidArgumentException;
-
 abstract class AbstractSchemaType
 {
 	/**
@@ -13,27 +11,14 @@ abstract class AbstractSchemaType
 	 * @param string
 	 * @return mixed
 	 */
-	public function __get(string $key)
-	{
-		$key = ucfirst($key);
-		$method = "get" . $key;
+	abstract public function __get(string $key);
 
-		if(method_exists($this, $method))
-		{
-			return $this->{$method}();
-		} else {
-			throw new InvalidArgumentException("$key is not a Property", 1);
-		}
-	}
-
-	public function getType()
-	{
-		$className = get_class($this);
-
-		$className = explode("\\", $className);
-
-		return $className[count($className) - 1];
-	}
+	/**
+	 * Return the @type
+	 * 
+	 * @return string
+	 */
+	abstract public function getType();
 
 	/**
 	 * Assign properties
@@ -42,16 +27,7 @@ abstract class AbstractSchemaType
 	 * @param array
 	 * @return void
 	 */
-	protected function assignAttributes(array $attributes)
-	{
-		$attributes = array_filter($attributes, function($k){
-			return $this->isPermitted($k);
-		}, ARRAY_FILTER_USE_KEY);
-
-		foreach ($attributes as $key => $value) {
-			$this->{$key} = $value;
-		}
-	}
+	abstract protected function assignAttributes(array $attributes);
 
 	/**
 	 * Check if a attribute
@@ -60,8 +36,5 @@ abstract class AbstractSchemaType
 	 * @param string $attribute
 	 * @return bool
 	 */
-	protected function isPermitted(string $attribute) : bool
-	{
-		return !in_array($attribute, $this->permitted) ? false : true;
-	}
+	abstract protected function isPermitted(string $attribute) : bool;
 }
