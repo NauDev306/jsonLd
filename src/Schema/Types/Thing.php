@@ -18,7 +18,7 @@ class Thing extends BaseType
 	 * Some Property
 	 * @var string
 	 */
-	public $someProperty = "test";
+	protected $someProperty = "test";
 
 	/**
 	 * Instantiate the Type by passing it's

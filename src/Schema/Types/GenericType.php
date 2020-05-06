@@ -11,7 +11,7 @@ class GenericType extends AbstractSchemaType
 	 * The Type Name
 	 * @var string
 	 */
-	public $type;
+	protected $type;
 
 	/**
 	 * Assign the Type Name
