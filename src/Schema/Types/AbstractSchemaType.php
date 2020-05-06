@@ -2,7 +2,9 @@
 
 namespace NauDev\JsonLd\Schema\Types;
 
-abstract class AbstractSchemaType
+use NauDev\JsonLd\Contracts\Schema\SchemaType as SchemaTypeInterface;
+
+abstract class AbstractSchemaType implements SchemaTypeInterface
 {
 	/**
 	 * Magic Getter
