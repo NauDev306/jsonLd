@@ -57,8 +57,7 @@ class JsonLd implements JsonLdContract
 
 		$json = array_merge($json, $type);
 		
-		return $json;
-		//return json_encode($types);
+		return json_encode($json, JSON_UNESCAPED_SLASHES);
 	}
 
 }

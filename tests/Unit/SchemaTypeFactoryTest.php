@@ -25,6 +25,6 @@ class SchemaTypeFactoryTest extends TestCase
 		$type = SchemaTypeFactory::make(array_keys($data)[0], $data["thing"]);
 
 		$this->assertTrue(is_array($type));
-		print_r($type);
+		//print_r($type);
 	}
 }
