@@ -46,15 +46,18 @@ class JsonLd implements JsonLdContract
 	 */
 	public function getJsonLd(array $data)
 	{
-		//$types["@context"] = $this->context;
+		$json = [];
 
-		foreach (array_keys($data) as $type) {
-			$types[] = SchemaTypeFactory::make($type, $data[$type]);
-			
-		}
+		$json["@context"] = $this->context;
+
+		$typeName = array_keys($data)[0];
+		$typeData = $data[$typeName];
+
+		$type = SchemaTypeFactory::make($typeName, $typeData);
+
+		$json = array_merge($json, $type);
 		
-
-		return $types;
+		return $json;
 		//return json_encode($types);
 	}
 

@@ -10,7 +10,7 @@ interface SchemaTypeFactory
 	 * 
 	 * @param string $typeName
 	 * @param array $typeData
-	 * @return \NauDev\JsonLd\Schema\Types\AbstractSchemaType $type
+	 * @return array $type
 	 */
 	public static function make(string $typeName, array $typeData);
 }

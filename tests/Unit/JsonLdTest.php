@@ -48,18 +48,26 @@ class JsonLdTest extends TestCase
 	 */
 	public function testIfGetJsonLdReturnsJson()
 	{
-		$jsonLd = new JsonLd;
-
 		$data = [
+			"context" => "https://example.com",
 			"thing" => [
 				"someProperty" => "blabla"
 			]
 		];
 
+		$expected = [
+			"@context" => "https://example.com",
+			"@type" => "Thing",
+			"someProperty" => "blabla"
+		];
+
+		$jsonLd = new JsonLd($data["context"]);
+		unset($data["context"]);
+
 		//$decoded = json_decode($jsonLd->getJsonLd($data));
 		$decoded = $jsonLd->getJsonLd($data);
 		$this->assertNotNull($decoded);
 		//$this->assertEquals($expected, $decoded);
-		//print_r($decoded);
+		print_r($decoded);
 	}
 }

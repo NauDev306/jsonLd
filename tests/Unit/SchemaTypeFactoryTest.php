@@ -9,13 +9,12 @@ use NauDev\JsonLd\Schema\SchemaTypeFactory;
 class SchemaTypeFactoryTest extends TestCase
 {
 	/**
-	 * Test if the makeType function
-	 * returns an AbstractSchemaType
-	 * variant
+	 * Test if the make function
+	 * returns an array
 	 *
 	 * @return void
 	 */
-	public function testIfMakeTypeReturnsCorrectType()
+	public function testIfMakeTypeReturnsArrayWithType()
 	{
 		$data = [
 			"thing" => [
@@ -23,11 +22,9 @@ class SchemaTypeFactoryTest extends TestCase
 			]
 		];
 
-		$expectedClass = Thing::class;
-
 		$type = SchemaTypeFactory::make(array_keys($data)[0], $data["thing"]);
 
-		$this->assertInstanceOf($expectedClass, $type);
-		//print_r($type);
+		$this->assertTrue(is_array($type));
+		print_r($type);
 	}
 }

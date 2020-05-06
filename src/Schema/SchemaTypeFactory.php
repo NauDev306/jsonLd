@@ -22,7 +22,7 @@ class SchemaTypeFactory implements FactoryInterface
 	 * 
 	 * @param string $typeName
 	 * @param array $typeData
-	 * @return \NauDev\JsonLd\Schema\Types\AbstractSchemaType $type
+	 * @return array $type
 	 * 
 	 * @throws \InvalidArgumentException
 	 */
@@ -42,7 +42,14 @@ class SchemaTypeFactory implements FactoryInterface
 			}
 		}
 
-		return new $className($typeData);
+		$type = [];
+		$type["@type"] = ucfirst($typeName);
+
+		$typeObj = new $className($typeData);
+
+		$type = array_merge($type, $typeObj->__toArray());
+
+		return $type;
 
 	}
 }
