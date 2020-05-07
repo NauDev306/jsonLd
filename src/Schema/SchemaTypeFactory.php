@@ -4,6 +4,7 @@ namespace NauDev\JsonLd\Schema;
 
 use \InvalidArgumentException;
 use NauDev\JsonLd\Schema\Types\Thing;
+use NauDev\JsonLd\Schema\Types\PostalAddress;
 use NauDev\JsonLd\Contracts\Schema\SchemaTypeFactory as FactoryInterface;
 
 class SchemaTypeFactory implements FactoryInterface
@@ -13,7 +14,8 @@ class SchemaTypeFactory implements FactoryInterface
 	 * @var array
 	 */
 	protected static $typeMap = [
-		"thing" => Thing::class
+		"thing" => Thing::class,
+		"address" => PostalAddress::class
 	];
 
 	/**

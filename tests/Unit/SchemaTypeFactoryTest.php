@@ -27,4 +27,27 @@ class SchemaTypeFactoryTest extends TestCase
 		$this->assertTrue(is_array($type));
 		//print_r($type);
 	}
+
+	/**
+	 * Test making nested
+	 * types
+	 *
+	 * @return void
+	 */
+	public function testIfMakeTypeReturnsNestedArray()
+	{
+		$data = [
+			"thing" => [
+				"someProperty" => "tester",
+				"address" => [
+					"city" => "Miami"
+				]
+			]
+		];
+
+		$type = SchemaTypeFactory::make(array_keys($data)[0], $data["thing"]);
+
+		$this->assertTrue(is_array($type));
+		print_r($type);
+	}
 }

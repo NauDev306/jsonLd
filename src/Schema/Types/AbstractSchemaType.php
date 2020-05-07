@@ -7,6 +7,12 @@ use \InvalidArgumentException;
 abstract class AbstractSchemaType
 {
 	/**
+	 * The List of permitted fields
+	 * @var array
+	 */
+	protected $permitted = [];
+
+	/**
 	 * Magic Getter
 	 * for any property
 	 *

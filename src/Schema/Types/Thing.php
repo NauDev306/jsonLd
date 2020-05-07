@@ -17,7 +17,8 @@ class Thing extends BaseType
 	 * @var array
 	 */
 	protected $permitted = [
-		"someProperty"
+		"someProperty",
+		"address"
 	];
 
 	/**
@@ -27,6 +28,11 @@ class Thing extends BaseType
 	protected $someProperty = "test";
 
 	/**
+	 * Addres
+	 */
+	protected $address;
+
+	/**
 	 * Instantiate the Type by passing it's
 	 * attributes
 	 *
@@ -34,6 +40,8 @@ class Thing extends BaseType
 	 */
 	public function __construct(array $attributes = null)
 	{				
+		$this->permitted = array_merge(get_class_vars(parent::class)["permitted"], $this->permitted);
+
 		if(!is_null($attributes))
 		{
 			$this->assignAttributes($attributes);			
@@ -43,5 +51,10 @@ class Thing extends BaseType
 	public function getSomeProperty()
 	{
 		return $this->someProperty;
+	}
+
+	public function getAddress()
+	{
+		return $this->address;
 	}
 }
