@@ -40,7 +40,10 @@ class Thing extends BaseType
 	 */
 	public function __construct(array $attributes = null)
 	{				
-		$this->permitted = array_merge(get_class_vars(parent::class)["permitted"], $this->permitted);
+		$this->permitted = array_merge(
+			get_class_vars(parent::class)["permitted"], 
+			$this->permitted
+		);
 
 		if(!is_null($attributes))
 		{
