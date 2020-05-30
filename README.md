@@ -29,16 +29,16 @@ create **(*the class must be available - you can easily create a missing one - s
 will give you
 
 	{
-		'@context': 'https://schema.org',
-		'@type': 'Person',
-		'name': 'John Doe',
-		'address': {
-			'@type': 'PostalAddress',
-			'streetAddress': '123 Test Ave',
-			'addressLocality': 'Some Town',
-			'addressRegion': 'FL',
-			'postalCode': '12345',
-			'addressCountry': 'USA'
+		"@context": "https://schema.org",
+		"@type": "Person",
+		"name": "John Doe",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "123 Test Ave",
+			"addressLocality": "Some Town",
+			"addressRegion": "FL",
+			"postalCode": "12345",
+			"addressCountry": "USA"
 		}
 	}
 
