@@ -2,7 +2,7 @@
 
 namespace NauDev\JsonLd\Schema\Types;
 
-use NauDev\JsonLd\Schema\Types\AbstractSchemaType as BaseType;
+use NauDev\JsonLd\Schema\Types\SchemaType as BaseType;
 
 class Thing extends BaseType
 {
@@ -34,10 +34,7 @@ class Thing extends BaseType
 	 */
 	public function __construct(array $attributes = null)
 	{				
-		$this->permitted = array_merge(
-			get_class_vars(parent::class)["permitted"], 
-			$this->permitted
-		);
+		$this->mergePermittedFromParent();
 
 		if(!is_null($attributes))
 		{

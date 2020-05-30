@@ -7,10 +7,12 @@ use \InvalidArgumentException;
 abstract class AbstractSchemaType
 {
 	/**
-	 * The List of permitted fields
-	 * @var array
+	 * Merge the permitted attributes from the parent class
+	 * downwards
+	 *
+	 * @return void
 	 */
-	protected $permitted = [];
+	abstract protected function mergePermittedFromParent();
 
 	/**
 	 * Magic Getter
