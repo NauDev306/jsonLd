@@ -20,7 +20,7 @@ class JsonLd implements JsonLdContract
 	 * @param string $context|null
 	 * @return void
 	 */
-	public function __construct($context = null, $data = null)
+	public function __construct($context = null)
 	{
 		$this->context = !is_null($context)
 						? $context

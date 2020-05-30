@@ -11,19 +11,66 @@ class PostalAddress extends Thing
 	 * @var array
 	 */
 	protected $permitted = [
-		"city"
+		"streetAddress",
+		"addressLocality",
+		"addressRegion",
+		"postalCode",
+		"addressCountry"
 	];
+
+	/**
+	 * The Street
+	 * @var string
+	 */
+	protected $streetAddress;
 
 	/**
 	 * The City
 	 * @var string
 	 */
-	protected $city;
+	protected $addressLocality;
 	
+	/**
+	 * The Statae / Region
+	 * @var string
+	 */
+	protected $addressRegion;
 
-	public function getCity()
+	/**
+	 * The Postal Code
+	 * @var string
+	 */
+	protected $postalCode;
+
+	/**
+	 * The Country
+	 * @var string
+	 */
+	protected $addressCountry;
+
+	public function getStreetAddress()
 	{
-		return $this->city;
+		return $this->streetAddress;
+	}
+
+	public function getAddressLocality()
+	{
+		return $this->addressLocality;
+	}
+
+	public function getAddressRegion()
+	{
+		return $this->addressRegion;
+	}
+
+	public function getPostalCode()
+	{
+		return $this->postalCode;
+	}
+
+	public function getAddressCountry()
+	{
+		return $this->addressCountry;
 	}
 
 

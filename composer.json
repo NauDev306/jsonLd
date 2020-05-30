@@ -6,6 +6,7 @@
 	"require": {
 		"php": "^7.3",
 		"ext-json": "*",
+		"illuminate/validation": "^6.9|^7.0",
 		"illuminate/support": "^6.9|^7.0"
 	},
 	"require-dev": {
