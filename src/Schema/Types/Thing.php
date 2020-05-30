@@ -17,20 +17,14 @@ class Thing extends BaseType
 	 * @var array
 	 */
 	protected $permitted = [
-		"someProperty",
-		"address"
+		"name",
 	];
 
 	/**
 	 * Some Property
 	 * @var string
 	 */
-	protected $someProperty = "test";
-
-	/**
-	 * Addres
-	 */
-	protected $address;
+	protected $name = "test";
 
 	/**
 	 * Instantiate the Type by passing it's
@@ -51,13 +45,8 @@ class Thing extends BaseType
 		}
 	}
 
-	public function getSomeProperty()
+	public function getName()
 	{
-		return $this->someProperty;
-	}
-
-	public function getAddress()
-	{
-		return $this->address;
+		return $this->name;
 	}
 }

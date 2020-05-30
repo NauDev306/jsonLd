@@ -51,14 +51,14 @@ class JsonLdTest extends TestCase
 		$data = [
 			"context" => "https://example.com",
 			"thing" => [
-				"someProperty" => "blabla"
+				"name" => "blabla"
 			]
 		];
 
 		$expected = (object)[
 			"@context" => "https://example.com",
 			"@type" => "Thing",
-			"someProperty" => "blabla"
+			"name" => "blabla"
 		];
 
 		$jsonLd = new JsonLd($data["context"]);
@@ -67,6 +67,6 @@ class JsonLdTest extends TestCase
 		$decoded = json_decode($jsonLd->getJsonLd($data));
 		$this->assertNotNull($decoded);
 		$this->assertEquals($expected, $decoded);
-		print_r($decoded);
+		//print_r($decoded);
 	}
 }

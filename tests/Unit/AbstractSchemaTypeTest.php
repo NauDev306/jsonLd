@@ -19,7 +19,7 @@ class AbstractSchemaTypeTest extends TestCase
 		$expected = "test";
 
 		$attributes = [
-			"someProperty" => "test"
+			"name" => "test"
 		];
 
 		$type = new Thing($attributes);
@@ -65,7 +65,7 @@ class AbstractSchemaTypeTest extends TestCase
 	public function testIfMagicToArrayReturnsAllObjVars()
 	{
 		$expected = [
-			"someProperty" => "test"
+			"name" => "test"
 		];
 
 		$type = new Thing($expected);

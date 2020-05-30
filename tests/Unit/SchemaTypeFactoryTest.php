@@ -18,7 +18,7 @@ class SchemaTypeFactoryTest extends TestCase
 	{
 		$data = [
 			"thing" => [
-				"someProperty" => "tester"
+				"name" => "tester"
 			]
 		];
 
@@ -38,16 +38,13 @@ class SchemaTypeFactoryTest extends TestCase
 	{
 		$data = [
 			"thing" => [
-				"someProperty" => "tester",
-				"address" => [
-					"city" => "Miami"
-				]
+				"name" => "tester",
 			]
 		];
 
 		$type = SchemaTypeFactory::make(array_keys($data)[0], $data["thing"]);
 
 		$this->assertTrue(is_array($type));
-		print_r($type);
+		//print_r($type);
 	}
 }
