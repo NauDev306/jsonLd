@@ -18,13 +18,20 @@ class Thing extends BaseType
 	 */
 	protected $permitted = [
 		"name",
+		"alternateName"
 	];
 
 	/**
-	 * Some Property
+	 * The Name
 	 * @var string
 	 */
-	protected $name = "test";
+	protected $name;
+
+	/**
+	 * The alternate Name
+	 * @var string
+	 */
+	protected $alternateName;
 
 	/**
 	 * Instantiate the Type by passing it's
@@ -42,8 +49,23 @@ class Thing extends BaseType
 		}
 	}
 
+	/**
+	 * Get the Name
+	 * 
+	 * @return string
+	 */
 	public function getName()
 	{
 		return $this->name;
+	}
+
+	/**
+	 * Get the alternate Name
+	 * 
+	 * @return string
+	 */
+	public function getAlternateName()
+	{
+		return $this->alternatename;
 	}
 }

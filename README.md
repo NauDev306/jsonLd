@@ -9,7 +9,7 @@ Take any array that represents the object tree you would like to
 create **(*the class must be available - you can easily create a missing one - see below*)**
 
 	use NauDev\JsonLd\JsonLd;
-    ''
+
 	$data = [
 		"person" => [
 			"name" => "John Doe",
@@ -22,7 +22,7 @@ create **(*the class must be available - you can easily create a missing one - s
 			]
 		]
 	];
-	''
+	
 	$jsonLd = new JsonLd();
 	return $jsonLd->getJsonLd($data);
 

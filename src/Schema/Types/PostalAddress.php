@@ -48,26 +48,51 @@ class PostalAddress extends Thing
 	 */
 	protected $addressCountry;
 
+	/**
+	 * Get the Street Address
+	 *
+	 * @return string
+	 */
 	public function getStreetAddress()
 	{
 		return $this->streetAddress;
 	}
 
+	/**
+	 * Get the Address Locality
+	 *
+	 * @return string
+	 */	
 	public function getAddressLocality()
 	{
 		return $this->addressLocality;
 	}
 
+	/**
+	 * Get the Address Region
+	 *
+	 * @return string
+	 */
 	public function getAddressRegion()
 	{
 		return $this->addressRegion;
 	}
 
+	/**
+	 * Get the Postal Code
+	 *
+	 * @return string
+	 */
 	public function getPostalCode()
 	{
 		return $this->postalCode;
 	}
 
+	/**
+	 * Get the Address Country
+	 *
+	 * @return string
+	 */
 	public function getAddressCountry()
 	{
 		return $this->addressCountry;
